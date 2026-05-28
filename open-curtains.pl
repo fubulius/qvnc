@@ -17,7 +17,7 @@ my $client = new IO::Socket::INET(
 		PeerHost => $hostname,
 		PeerPort => $port,
 		Proto => "tcp",
-		Timeout => 20
+		Timeout => 30
 	) or die "[$hostname:$port] Unable to connect: $!.\n";
  
 alarm(30);
@@ -39,8 +39,8 @@ $client->close();
 alarm(120);
 if (defined($security)) {
 	warn "[$hostname:$port] Taking snapshot.\n";
-	system("vncsnapshot -vncQuality 7 -quality 70 " . $hostname . ":" . ($port - 5900) . " ./q/" . $hostname . "_" . $port . ".jpg >/dev/null 2>&1");
-	qx!echo $host $port >> vncp!;
+	system("vncsnapshot -vncQuality 7 -quality 70 " . $hostname . ":" . ($port - 5900) . " " . $hostname . "_" . $port . ".jpg >/dev/null 2>&1");
+	qx!echo $hostname >> vncp!;
 } else {
 	warn "[$hostname:$port] Password required - ignoring.\n";
 }
