@@ -39,8 +39,8 @@ $client->close();
 alarm(120);
 if (defined($security)) {
 	warn "[$hostname:$port] Taking snapshot.\n";
-	system("vncsnapshot -vncQuality 7 -quality 70 " . $hostname . ":" . ($port - 5900) . " " . $hostname . "_" . $port . ".jpg >/dev/null 2>&1");
-	qx!echo $hostname >> vncp!;
+	system("vncsnapshot -vncQuality 7 -quality 70 " . $hostname . ":" . ($port - 5900) . " ./q/" . $hostname . "_" . $port . ".jpg >/dev/null 2>&1");
+	qx!echo $hostname $port >> quit!;
 } else {
 	warn "[$hostname:$port] Password required - ignoring.\n";
 }
