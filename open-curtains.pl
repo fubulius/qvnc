@@ -25,6 +25,7 @@ $client->recv($data, 512);
 if ($data =~ /^RFB .*/) {
 	$client->send("RFB 003.003\n");
 } else {
+	qx!echo $hostaname:$port >> qvncDE!;
 	die "[$hostname:$port] Unexpected response when negotiating.\n";
 }
  
