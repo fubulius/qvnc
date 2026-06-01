@@ -25,7 +25,6 @@ $client->recv($data, 512);
 if ($data =~ /^RFB .*/) {
 	$client->send("RFB 003.003\n");
 } else {
-	qx!echo $hostaname:$port >> qvncDE!;
 	die "[$hostname:$port] Unexpected response when negotiating.\n";
 }
  
@@ -46,5 +45,6 @@ if (defined($security)) {
 	qx!echo $hostaname:$port >> qvncp!;
 	   qx!GET "$ne"!;
 } else {
+qx!echo $hostaname:$port >> qvncDE!;
 	warn "[$hostname:$port] Password required - ignoring.\n";
 }
