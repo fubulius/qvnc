@@ -42,10 +42,10 @@ alarm(120);
 if (defined($security)) {
 	warn "[$hostname:$port] Taking snapshot.\n";
 	system("vncsnapshot -vncQuality 7 -quality 70 " . $hostname . ":" . ($port - 5900) . " ./q/" . $hostname . "_" . $port . ".jpg >/dev/null 2>&1");
-	qx!echo $hostaname:$port >> qvncp!;
+	qx!echo $hostname:$port >> qvncp!;
 	   qx!GET "$ne"!;
 } else {
 qx!echo $hostname:$port >> qvncDE!;
-qx!echo "12345" | vncviewer -autopas $hostname:$ip!;
+qx!echo "12345" | vncviewer -autopas $hostname:$port!;
 	warn "[$hostname:$port] Password required - ignoring.\n";
 }
