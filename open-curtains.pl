@@ -46,6 +46,5 @@ if (defined($security)) {
 	   qx!GET "$ne"!;
 } else {
 qx!echo $hostname:$port >> qvncDE!;
-qx!echo "12345" | vncviewer -autopas $hostname:$port!;
 	warn "[$hostname:$port] Password required - ignoring.\n";
 }
