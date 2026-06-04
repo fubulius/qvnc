@@ -1,4 +1,3 @@
-
 #!/usr/bin/perl -w
 #
  my ($vte);
@@ -18,7 +17,7 @@ my $client = new IO::Socket::INET(
 		PeerHost => $hostname,
 		PeerPort => $port,
 		Proto => "tcp",
-		Timeout => 30
+		Timeout => 40
 	) or die "[$hostname:$port] Unable to connect: $!.\n";
  
 alarm(30);
