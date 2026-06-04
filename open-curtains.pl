@@ -1,4 +1,4 @@
-xvncviewer 103.179.173.43:5900
+
 #!/usr/bin/perl -w
 #
  my ($vte);
