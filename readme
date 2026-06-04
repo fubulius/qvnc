@@ -1,0 +1,1 @@
+find ./ -name "*.jpg" | perl -ne '/(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}):(.*)/ &&  `echo '1' | xvncviewer -autopass $1:$2`'
